@@ -1,5 +1,6 @@
 Reselect Change Memoize
 =======================
+[![Travis][build-badge]][build]
 
 A simple memoize function for reselect which performs a callback everytime the result changes.
 * createSelectorWithChangeCallback allows you to easily substitute createSelector
