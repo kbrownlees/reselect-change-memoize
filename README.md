@@ -1,6 +1,7 @@
 Reselect Change Memoize
 =======================
 [![Build Status](https://travis-ci.org/kbrownlees/reselect-change-memoize.svg?branch=master)](https://travis-ci.org/kbrownlees/reselect-change-memoize)
+[![npm version](https://badge.fury.io/js/reselect-change-memoize.svg)](https://badge.fury.io/js/reselect-change-memoize)
 
 A simple memoize function for reselect which performs a callback everytime the result changes.
 * createSelectorWithChangeCallback allows you to easily substitute createSelector
