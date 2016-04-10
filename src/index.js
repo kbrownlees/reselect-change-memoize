@@ -31,14 +31,17 @@ export function createSelectorWithChangeCallback(callback, ...args) {
 }
 
 function logNamedChange(name) {
+  let logName = name || 'unknown';
+  logName = `- ${logName}`;
+
   return (lastArgs, lastResult, newArgs, newResult) => {
     // eslint-disable-next-line no-console
     console.log(
-      name || 'unknown', '\n',
-      '\t', 'lastArgs:', lastArgs, '\n',
-      '\t', 'lastResult:', lastResult, '\n',
-      '\t', 'newArgs:', newArgs, '\n',
-      '\t', 'newResult:', newResult, '\n'
+      logName,
+      '\n\tlastArgs:', lastArgs,
+      '\n\tlastResult:', lastResult,
+      '\n\tnewArgs:', newArgs,
+      '\n\tnewResult:', newResult
     );
   };
 }
