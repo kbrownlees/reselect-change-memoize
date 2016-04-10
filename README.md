@@ -51,6 +51,7 @@ const selector3 = createSelector(
 );
 selector2({ initial: 'state' });
 selector1({ second: 'state' });
+selector3({ second: 'state' });
 ```
 
 produces
@@ -75,5 +76,5 @@ produces
 	lastArgs: {} 
 	lastResult: {} 
 	newArgs: [ { second: 'state' } ] 
-	newResult: { selector2: { second: 'state' } }
+	newResult: { selector3: { second: 'state' } }
 ```

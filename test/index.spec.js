@@ -60,7 +60,7 @@ describe('createSelector', () => {
     const selector3 = createSelector(
       (state) => state,
       (state) => { // eslint-disable-line arrow-body-style
-        return { selector2: state };
+        return { selector3: state };
       }
     );
 
