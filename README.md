@@ -1,6 +1,6 @@
 Reselect Change Memoize
 =======================
-[![Travis][build-badge]][build]
+[![Build Status](https://travis-ci.org/kbrownlees/reselect-change-memoize.svg?branch=master)](https://travis-ci.org/kbrownlees/reselect-change-memoize)
 
 A simple memoize function for reselect which performs a callback everytime the result changes.
 * createSelectorWithChangeCallback allows you to easily substitute createSelector
