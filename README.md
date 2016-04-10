@@ -44,7 +44,7 @@ const selector2 = createSelector(
     return { selector2: state };
   }
 );
-// The name doesn't not have to be provided
+// The name doesn't have to be provided
 const selector3 = createSelector(
   selector1,
   (state) => {
