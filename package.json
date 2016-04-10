@@ -2,7 +2,8 @@
   "name": "reselect-change-memoize",
   "version": "1.0.1",
   "description": "A memoize function for reselect which will make a callback when a result changes",
-  "main": "src/index.js",
+  "main": "lib/index.js",
+  "jsnext:main": "src/index.js",
   "scripts": {
     "clean": "rimraf lib dist",
     "build": "babel src --out-dir lib",
