@@ -1,5 +1,7 @@
 import expect from 'expect';
-import { createSelector, createSelectorWithChangeCallback } from '../src';
+
+import { createSelectorCreator } from 'reselect';
+import { changeMemoize, createSelector, createSelectorWithChangeCallback } from '../src';
 
 describe('createSelectorWithChangeCallback', () => {
   it('Code for README', () => {
@@ -67,5 +69,28 @@ describe('createSelector', () => {
     selector2({ initial: 'state' });
     selector1({ second: 'state' });
     selector3({ second: 'state' });
+  });
+});
+
+describe('createSelectorCreator', () => {
+  it('code for README', () => {
+    // eslint-disable-next-line no-unused-vars
+    function myCallback(lastArgs, lastResult, newArgs, newResult) {
+      // Your code
+      // eslint-disable-next-line no-console
+      console.log(newResult);
+    }
+
+    // eslint-disable-next-line no-shadow
+    const createSelector = createSelectorCreator(changeMemoize, myCallback);
+
+    const selector = createSelector(
+      (state) => state,
+      (state) => { // eslint-disable-line arrow-body-style
+        return { selector: state };
+      }
+    );
+
+    selector({ initial: 'state' });
   });
 });

@@ -4,8 +4,21 @@ Reselect Change Memoize
 [![npm version](https://badge.fury.io/js/reselect-change-memoize.svg)](https://badge.fury.io/js/reselect-change-memoize)
 
 A simple memoize function for reselect which performs a callback everytime the result changes.
+* a changeMemoize
 * createSelectorWithChangeCallback allows you to easily substitute createSelector
-* a createSelector helper which enables logging if not in production and allows you to name selectors
+* a createSelector helper which enables change logging if not in production and allows you to name selectors
+
+
+```js
+import { createSelectorCreator } from 'reselect';
+import { changeMemoize } from 'reselect-change-memoize';
+
+const myCallback = function(lastArgs, lastResult, newArgs, newResult) {
+  // Your code
+};
+
+const createSelector = createSelectorCreator(changeMemoize, myCallback);
+```
 
 ```js
 import { createSelectorWithChangeCallback } from 'reselect-change-memoize';
@@ -17,7 +30,7 @@ const myCallback = function(lastArgs, lastResult, newArgs, newResult) {
 const selector = createSelectorWithChangeCallback(
   myCallback,
   (state) => state,
-  (state) => { // eslint-disable-line arrow-body-style
+  (state) => {
     return { state };
   }
 );
@@ -25,7 +38,8 @@ const selector = createSelectorWithChangeCallback(
 selector({ initial: 'state' });
 ```
 
-Alternatively, using the basic logging create selector
+Alternatively, to use the inbuilt logging create selector, simply import createSelector from
+reselect-change-memoize rather than reselect.
 
 ```js
 import { createSelector } from 'reselect-change-memoize';

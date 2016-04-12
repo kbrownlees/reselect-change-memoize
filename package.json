@@ -20,7 +20,8 @@
   },
   "keywords": [
     "reselect",
-    "memoize"
+    "memoize",
+    "logging"
   ],
   "author": "Kieran Brownlees",
   "license": "MIT",
