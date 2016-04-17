@@ -1,13 +1,16 @@
-Reselect Change Memoize
-=======================
+# Reselect Change Memoize
+
 [![Build Status](https://travis-ci.org/kbrownlees/reselect-change-memoize.svg?branch=master)](https://travis-ci.org/kbrownlees/reselect-change-memoize)
 [![npm version](https://badge.fury.io/js/reselect-change-memoize.svg)](https://badge.fury.io/js/reselect-change-memoize)
 
 A simple memoize function for reselect which performs a callback everytime the result changes.
+
+This package contains three exports:
 * a changeMemoize
-* createSelectorWithChangeCallback allows you to easily substitute createSelector
+* createSelectorWithChangeCallback which allows you to easily substitute createSelector
 * a createSelector helper which enables change logging if not in production and allows you to name selectors
 
+## changeMemoize
 
 ```js
 import { createSelectorCreator } from 'reselect';
@@ -19,6 +22,8 @@ const myCallback = function(lastArgs, lastResult, newArgs, newResult) {
 
 const createSelector = createSelectorCreator(changeMemoize, myCallback);
 ```
+
+## createSelectorWithChangeCallback
 
 ```js
 import { createSelectorWithChangeCallback } from 'reselect-change-memoize';
@@ -38,8 +43,7 @@ const selector = createSelectorWithChangeCallback(
 selector({ initial: 'state' });
 ```
 
-Alternatively, to use the inbuilt logging create selector, simply import createSelector from
-reselect-change-memoize rather than reselect.
+## createSelector
 
 ```js
 import { createSelector } from 'reselect-change-memoize';
