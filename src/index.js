@@ -4,10 +4,10 @@ import { createSelectorCreator, defaultMemoize } from 'reselect';
 const notset = {};
 
 
-export function changeMemoize(func, changeCallback, memoize) {
+export function changeMemoize(func, changeCallback, memoize, ...memoizeOptions) {
   const memoizeFunction = memoize || defaultMemoize;
 
-  const memoizeInstance = memoizeFunction(func);
+  const memoizeInstance = memoizeFunction(func, ...memoizeOptions);
   if (changeCallback === undefined) {
     return memoizeInstance;
   }
