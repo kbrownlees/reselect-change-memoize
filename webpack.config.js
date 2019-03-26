@@ -1,39 +1,20 @@
-'use strict';
 
-var webpack = require('webpack');
-
-var plugins = [
-  new webpack.optimize.OccurenceOrderPlugin(),
-  new webpack.DefinePlugin({
-    'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
-  })
-];
-
-if (process.env.NODE_ENV === 'production') {
-  plugins.push(
-    new webpack.optimize.UglifyJsPlugin({
-      compressor: {
-        screw_ie8: true,
-        warnings: false
-      }
-    })
-  );
-}
+const path = require('path');
 
 module.exports = {
+  entry: './src/index.js',
   module: {
-    loaders: [{
+    rules: [{
       test: /\.js$/,
-      loaders: ['babel-loader'],
+      use: ['babel-loader'],
       exclude: /node_modules/
     }]
   },
   output: {
-    library: 'reselect-change-memoize',
-    libraryTarget: 'umd'
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'reselect-change-memoize.js',
+    library: 'reselectChangeMemoize',
+    libraryTarget: 'umd',
   },
-  plugins: plugins,
-  resolve: {
-    extensions: ['', '.js']
-  }
+  externals: ['reselect']
 };

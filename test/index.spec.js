@@ -12,10 +12,10 @@ describe('createSelectorWithChangeCallback', () => {
 
     const selector = createSelectorWithChangeCallback(
       myCallback,
-      (state) => state,
+      state => state,
       (state) => { // eslint-disable-line arrow-body-style
         return { state };
-      }
+      },
     );
 
     selector({ initial: 'state' });
@@ -25,10 +25,10 @@ describe('createSelectorWithChangeCallback', () => {
     let calls = 0;
     const selector = createSelectorWithChangeCallback(
       () => { calls += 1 },
-      (state) => state,
+      state => state,
       (state) => { // eslint-disable-line arrow-body-style
         return { state };
-      }
+      },
     );
 
     let state = {};
@@ -46,24 +46,24 @@ describe('createSelector', () => {
   it('Output for README', () => {
     const selector1 = createSelector(
       'An awesome selector',
-      (state) => state,
+      state => state,
       (state) => { // eslint-disable-line arrow-body-style
         return { selector1: state };
-      }
+      },
     );
     const selector2 = createSelector(
       'A second awesome selector which uses the first awesome selector',
       selector1,
       (state) => { // eslint-disable-line arrow-body-style
         return { selector2: state };
-      }
+      },
     );
     // The name doesn't not have to be provided
     const selector3 = createSelector(
-      (state) => state,
+      state => state,
       (state) => { // eslint-disable-line arrow-body-style
         return { selector3: state };
-      }
+      },
     );
 
     selector2({ initial: 'state' });
@@ -85,10 +85,10 @@ describe('createSelectorCreator', () => {
     const createSelector = createSelectorCreator(changeMemoize, myCallback);
 
     const selector = createSelector(
-      (state) => state,
+      state => state,
       (state) => { // eslint-disable-line arrow-body-style
         return { selector: state };
-      }
+      },
     );
 
     selector({ initial: 'state' });

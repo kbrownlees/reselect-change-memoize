@@ -41,14 +41,14 @@ function logNamedChange(name) {
       '\n\tlastArgs:', lastArgs,
       '\n\tlastResult:', lastResult,
       '\n\tnewArgs:', newArgs,
-      '\n\tnewResult:', newResult
+      '\n\tnewResult:', newResult,
     );
   };
 }
 
 export function createSelector(...args) {
   let name;
-  if (typeof(args[0]) === 'string') {
+  if (typeof args[0] === 'string') {
     name = args.shift();
   }
 
