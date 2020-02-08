@@ -1,8 +1,8 @@
 {
   "name": "reselect-change-memoize",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "A memoize function for reselect which will make a callback when a result changes",
-  "main": "lib/index.js",
+  "main": "dist/reselect-change-memoize.js",
   "jsnext:main": "src/index.js",
   "scripts": {
     "clean": "rimraf lib dist",
