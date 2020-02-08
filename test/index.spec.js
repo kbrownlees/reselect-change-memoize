@@ -1,9 +1,19 @@
 import expect from 'expect';
 
+import { performance } from 'perf_hooks';
+
 import { createSelectorCreator } from 'reselect';
 import { changeMemoize, createSelector, createSelectorWithChangeCallback } from '../src';
 
+const setup = () => {
+  if (global.performance == null) {
+    global.performance = performance;
+  }
+};
+
 describe('createSelectorWithChangeCallback', () => {
+  setup();
+
   it('Code for README', () => {
     // eslint-disable-next-line no-unused-vars
     function myCallback(lastArgs, lastResult, newArgs, newResult) {
@@ -12,7 +22,7 @@ describe('createSelectorWithChangeCallback', () => {
 
     const selector = createSelectorWithChangeCallback(
       myCallback,
-      state => state,
+      (state) => state,
       (state) => { // eslint-disable-line arrow-body-style
         return { state };
       },
@@ -25,7 +35,7 @@ describe('createSelectorWithChangeCallback', () => {
     let calls = 0;
     const selector = createSelectorWithChangeCallback(
       () => { calls += 1 },
-      state => state,
+      (state) => state,
       (state) => { // eslint-disable-line arrow-body-style
         return { state };
       },
@@ -43,10 +53,12 @@ describe('createSelectorWithChangeCallback', () => {
 });
 
 describe('createSelector', () => {
+  setup();
+
   it('Output for README', () => {
     const selector1 = createSelector(
       'An awesome selector',
-      state => state,
+      (state) => state,
       (state) => { // eslint-disable-line arrow-body-style
         return { selector1: state };
       },
@@ -60,7 +72,7 @@ describe('createSelector', () => {
     );
     // The name doesn't not have to be provided
     const selector3 = createSelector(
-      state => state,
+      (state) => state,
       (state) => { // eslint-disable-line arrow-body-style
         return { selector3: state };
       },
@@ -73,6 +85,8 @@ describe('createSelector', () => {
 });
 
 describe('createSelectorCreator', () => {
+  setup();
+
   it('code for README', () => {
     // eslint-disable-next-line no-unused-vars
     function myCallback(lastArgs, lastResult, newArgs, newResult) {
@@ -85,7 +99,7 @@ describe('createSelectorCreator', () => {
     const createSelector = createSelectorCreator(changeMemoize, myCallback);
 
     const selector = createSelector(
-      state => state,
+      (state) => state,
       (state) => { // eslint-disable-line arrow-body-style
         return { selector: state };
       },

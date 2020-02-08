@@ -8,16 +8,29 @@ export function changeMemoize(func, changeCallback, memoize, ...memoizeOptions) 
   const memoizeFunction = memoize || defaultMemoize;
 
   const memoizeInstance = memoizeFunction(func, ...memoizeOptions);
-  if (changeCallback === undefined) {
+  if (changeCallback == null) {
     return memoizeInstance;
   }
+
+  const performanceAvailable = typeof performance === 'object';
 
   let lastArgs = notset;
   let lastResult = notset;
   return (...args) => {
+    const startTime = performanceAvailable ? performance.now() : null;
     const result = memoizeInstance(...args);
+    const finishTime = performanceAvailable ? performance.now() : null;
+
+    const duration = startTime != null ? finishTime - startTime : null;
+
     if (result !== lastResult || lastResult === notset) {
-      changeCallback(lastArgs, lastResult, args, result);
+      changeCallback(
+        lastArgs,
+        lastResult,
+        args,
+        result,
+        { changed: true, duration },
+      );
       lastResult = result;
       lastArgs = args;
     }
@@ -34,7 +47,7 @@ function logNamedChange(name) {
   let logName = name || 'unknown';
   logName = `- ${logName}`;
 
-  return (lastArgs, lastResult, newArgs, newResult) => {
+  return (lastArgs, lastResult, newArgs, newResult, { duration }) => {
     // eslint-disable-next-line no-console
     console.log(
       logName,
@@ -42,6 +55,7 @@ function logNamedChange(name) {
       '\n\tlastResult:', lastResult,
       '\n\tnewArgs:', newArgs,
       '\n\tnewResult:', newResult,
+      '\n\tExecution time:', duration, 'ms',
     );
   };
 }
