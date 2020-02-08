@@ -15,6 +15,7 @@ module.exports = {
     filename: 'reselect-change-memoize.js',
     library: 'reselectChangeMemoize',
     libraryTarget: 'umd',
+    globalObject: 'this',
   },
   externals: ['reselect']
 };
