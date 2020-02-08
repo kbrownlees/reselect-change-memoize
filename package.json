@@ -1,6 +1,6 @@
 {
   "name": "reselect-change-memoize",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "A memoize function for reselect which will make a callback when a result changes",
   "main": "lib/index.js",
   "jsnext:main": "src/index.js",

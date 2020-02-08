@@ -3,7 +3,7 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## v1.1.1 (git)
+## v1.2.0
 
 * Upgrade dependencies
 * Record the duration of the selector and pass it to the change callback via a new extra properties argument 
