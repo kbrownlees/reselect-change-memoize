@@ -5,7 +5,9 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## v1.1.1 (git)
 
-Upgrade dependencies
+* Upgrade dependencies
+* Record the duration of the selector and pass it to the change callback via a new extra properties argument 
+* Change log format to include duration & use groupCollapsed
 
 ## v1.1.0 (2016-08-19)
 

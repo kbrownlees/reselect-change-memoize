@@ -77,24 +77,24 @@ selector3({ second: 'state' });
 produces
 
 ```
-- An awesome selector 
-	lastArgs: {} 
-	lastResult: {} 
-	newArgs: [ { initial: 'state' } ] 
-	newResult: { selector1: { initial: 'state' } }
-- A second awesome selector which uses the first awesome selector 
-	lastArgs: {} 
-	lastResult: {} 
-	newArgs: [ { selector1: { initial: 'state' } } ] 
-	newResult: { selector2: { selector1: { initial: 'state' } } }
-- An awesome selector 
-	lastArgs: [ { initial: 'state' } ] 
-	lastResult: { selector1: { initial: 'state' } } 
-	newArgs: [ { second: 'state' } ] 
-	newResult: { selector1: { second: 'state' } }
-- unknown 
-	lastArgs: {} 
-	lastResult: {} 
-	newArgs: [ { second: 'state' } ] 
-	newResult: { selector3: { second: 'state' } }
+- An awesome selector (0.06ms)
+  lastArgs {}
+  lastResult {}
+  newArgs [ { initial: 'state' } ]
+  newResult { selector1: { initial: 'state' } }
+- A second awesome selector which uses the first awesome selector (0.05ms)
+  lastArgs {}
+  lastResult {}
+  newArgs [ { selector1: { initial: 'state' } } ]
+  newResult { selector2: { selector1: { initial: 'state' } } }
+- An awesome selector (0.01ms)
+  lastArgs [ { initial: 'state' } ]
+  lastResult { selector1: { initial: 'state' } }
+  newArgs [ { second: 'state' } ]
+  newResult { selector1: { second: 'state' } }
+- unknown (0.03ms)
+  lastArgs {}
+  lastResult {}
+  newArgs [ { second: 'state' } ]
+  newResult { selector3: { second: 'state' } }
 ```

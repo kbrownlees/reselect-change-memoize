@@ -48,15 +48,19 @@ function logNamedChange(name) {
   logName = `- ${logName}`;
 
   return (lastArgs, lastResult, newArgs, newResult, { duration }) => {
-    // eslint-disable-next-line no-console
-    console.log(
-      logName,
-      '\n\tlastArgs:', lastArgs,
-      '\n\tlastResult:', lastResult,
-      '\n\tnewArgs:', newArgs,
-      '\n\tnewResult:', newResult,
-      '\n\tExecution time:', duration, 'ms',
-    );
+    let fullName = logName;
+    if (duration != null) {
+      fullName += ` (${duration.toFixed(2)}ms)`;
+    }
+
+    /* eslint-disable no-console */
+    console.groupCollapsed(fullName);
+    console.debug('lastArgs', lastArgs);
+    console.debug('lastResult', lastResult);
+    console.debug('newArgs', newArgs);
+    console.debug('newResult', newResult);
+    console.groupEnd();
+    /* eslint-enable no-console */
   };
 }
 
